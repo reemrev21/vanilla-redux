@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const add = document.getElementById("add");
+const minus = document.getElementById("minus");
+const number = document.querySelector("span");
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+let count = 0;
+// 딱 한번만 작동한다. 
+number.innerText = count;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// handleAdd, handleMinus는 값을 업데이트 하는 작업은 하지 않기 때문에
+// 값을 업데이트 할 수 있는 함수를 만들어준다. 
+const updateText = () => {
+  number.innerText = count;
+ }
+
+const handleAdd = () => {
+  count = count + 1;
+  updateText();
+ };
+
+const handleMinus = () => {
+  count = count - 1;
+  updateText();
+ };
+
+
+add.addEventListener("click", handleAdd);
+minus.addEventListener("click", handleMinus);
